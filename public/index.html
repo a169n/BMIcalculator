@@ -48,27 +48,27 @@
     <div class="main row">
       <div class="main-container col-md-6 col-sm-12">
         <form id="bmi-form" class="row g-3" action="/" method="POST" onsubmit="submitForm(event)">
-          <div class="col-md-12">
+          <div class="col-md-12 w-75">
             <label for="name" class="form-label">Name</label>
             <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name"
               required="true" />
           </div>
-          <div class="col-md-12">
+          <div class="col-md-12 w-75">
             <label for="height" class="form-label" id="heightLabel">Height</label>
-            <input type="number" class="form-control" id="height" name="height" placeholder="Enter your height"
+            <input type="number" step="0.01" class="form-control" id="height" name="height" placeholder="Enter your height"
               required="true" />
           </div>
-          <div class="col-md-12">
+          <div class="col-md-12 w-75">
             <label for="weight" class="form-label" id="weightLabel">Weight</label>
-            <input type="number" class="form-control" id="weight" name="weight" placeholder="Enter your weight"
+            <input type="number" step="0.01" class="form-control" id="weight" name="weight" placeholder="Enter your weight"
               required="true" />
           </div>
-          <div class="col-md-7">
+          <div class="col-md-7 w-50">
             <label for="age" class="form-label">Age</label>
             <input type="number" class="form-control" id="age" name="age" placeholder="Enter your age"
               required="true" />
           </div>
-          <div class="col-md-5">
+          <div class="col-md-5 w-25">
             <label for="gender" class="form-label">Gender</label>
             <select class="form-select" id="gender" name="gender">
               <option value="male">Male</option>
@@ -83,8 +83,8 @@
         </form>
       </div>
       <div id="results" class="main-container col-md-6 col-sm-12">
-        <h2>Results</h2>
-        <p>Hello</p>
+        <h2>Latest result</h2>
+        <p>Here you will see your result</p>
       </div>
     </div>
   </main>

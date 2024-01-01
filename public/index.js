@@ -5,15 +5,15 @@ function fetchUsers() {
       const userTableBody = document.getElementById("userTableBody");
       userTableBody.innerHTML = "";
 
+      const latestUser = users[users.length - 1];
+
+      displayLatestUserResult(latestUser);
+
       users.forEach((user) => {
         const row = document.createElement("tr");
 
-        const unitSystem = user.unitSystem || "";
-
-        console.log(unitSystem);
-
-        const heightUnit = unitSystem === "metric" ? "cm" : "inches";
-        const weightUnit = unitSystem === "metric" ? "kg" : "lbs";
+        const heightUnit = user.unitSystem === "metric" ? "cm" : "inches";
+        const weightUnit = user.unitSystem === "metric" ? "kg" : "lbs";
 
         const bmiCategory = getBMICategory(user.bmi);
 
@@ -41,8 +41,6 @@ function fetchUsers() {
     .catch((error) => console.error("Error fetching users:", error));
 }
 
-fetchUsers();
-
 function getBMICategory(bmi) {
   if (bmi < 18.5) {
     return "Underweight";
@@ -55,8 +53,16 @@ function getBMICategory(bmi) {
   }
 }
 
-function submitForm(event) {
+async function submitForm(event) {
   event.preventDefault();
+
+  const unitSystemSelect = document.getElementById("unitSystem");
+  const selectedOption = unitSystemSelect.value;
+
+  if (selectedOption !== "metric" && selectedOption !== "imperial") {
+    alert("Please select a valid unit system (Metric or Imperial).");
+    return;
+  }
 
   const formData = new URLSearchParams();
   formData.append("name", document.getElementById("name").value);
@@ -64,53 +70,53 @@ function submitForm(event) {
   formData.append("weight", document.getElementById("weight").value);
   formData.append("age", document.getElementById("age").value);
   formData.append("gender", document.getElementById("gender").value);
-  formData.append("unitSystem", document.getElementById("unitSystem").value);
+  formData.append("unitSystem", selectedOption);
 
-  const unitSystem = document.getElementById("unitSystem").value;
-  const height = parseFloat(document.getElementById("height").value);
-  const weight = parseFloat(document.getElementById("weight").value);
-
-  let bmi;
-
-  if (unitSystem === "selected") {
-    alert("Select the system!");
-  } else if (unitSystem == "metric") {
-    bmi = weight / (height / 100) ** 2;
-  } else if (unitSystem == "imperial") {
-    bmi = (weight / height ** 2) * 703;
-  }
-
-  formData.append("bmi", parseFloat(bmi.toFixed(3)));
-  formData.append("category", getBMICategory(bmi));
-
-  fetch("/", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-    body: formData,
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then((data) => {
-      console.log("Form submitted successfully:", data);
-      document.getElementById("name").value = "";
-      document.getElementById("height").value = "";
-      document.getElementById("weight").value = "";
-      document.getElementById("age").value = "";
-      alert("Form submitted successfully!");
-      fetchUsers();
-    })
-    .catch((error) => {
-      console.error("Error submitting form:", error);
-      alert(`Error submitting form: ${error.message}`);
+  try {
+    const response = await fetch("/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: formData,
     });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const user = await response.json();
+    document.getElementById("bmi-form").reset();
+    alert("Form submitted successfully!");
+    fetchUsers();
+    displayLatestUserResult(user);
+  } catch (error) {
+    console.error("Error submitting form:", error);
+    alert(`Error submitting form: ${error.message}`);
+  }
 }
 
+function displayLatestUserResult(user) {
+  const resultsDiv = document.getElementById("results");
+  const bmiCategory = getBMICategory(user.bmi);
+
+  const heightUnit = user.unitSystem === "metric" ? "cm" : "inches";
+  const weightUnit = user.unitSystem === "metric" ? "kg" : "lbs";
+
+  if (resultsDiv) {
+    resultsDiv.innerHTML = `
+    <h2>Latest result </h2>
+    <p>Name: ${user.name}</p>
+    <p>Height: ${user.height} ${heightUnit}</p>
+    <p>Weight: ${user.weight} ${weightUnit}</p>
+    <p>BMI: ${user.bmi.toFixed(3)}</p>
+    <p>Category: ${bmiCategory}</p>
+    <p>Age: ${user.age}</p>
+    <p>Gender: ${user.isMale ? "Male" : "Female"}</p>
+    <p> Created at: ${new Date(user.createdAt).toLocaleString()}</p>
+  `;
+  }
+}
 
 function applyCategoryStyle(row, bmiCategory) {
   switch (bmiCategory) {
@@ -185,10 +191,21 @@ function updateFormUnits(unitSystem) {
 }
 
 function onUnitSystemChange() {
-  const unitSystem = document.getElementById("unitSystem").value;
-  updateFormUnits(unitSystem);
+  const unitSystemSelect = document.getElementById("unitSystem");
+  const selectedOption = unitSystemSelect.value;
+
+  if (selectedOption !== "metric" && selectedOption !== "imperial") {
+    alert("Please select a valid unit system (Metric or Imperial).");
+    return;
+  } else {
+    updateFormUnits(selectedOption);
+  }
 }
 
-document
-  .getElementById("unitSystem")
-  .addEventListener("change", onUnitSystemChange);
+document.addEventListener("DOMContentLoaded", function () {
+  fetchUsers();
+  const unitSystemElement = document.getElementById("unitSystem");
+  if (unitSystemElement) {
+    unitSystemElement.addEventListener("change", onUnitSystemChange);
+  }
+});
