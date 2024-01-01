@@ -25,7 +25,11 @@ BMI Calculator is a simple web application that allows users to calculate their 
 - **POST /users:** Create a new user and calculate BMI.
 
 ## Installation:
-To install the required packages, run the following command:
+To install the required packages, run the following commands:
+```
+npm init -yes
+```
+After this install these packages:
 ```
 npm install dotenv express mongoose nodemon
 ```
