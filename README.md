@@ -24,41 +24,16 @@ BMI Calculator is a simple web application that allows users to calculate their 
 - **GET /users:** Get a list of all users.
 - **POST /users:** Create a new user and calculate BMI.
 
-  Example Request:
-  ```json
-  {
-    "name": "John Doe",
-    "height": 175,
-    "weight": 70,
-    "age": 30,
-    "gender": "male",
-    "unitSystem": "metric"
-  }
-  Example Responce:
-    ```json
-    {
-    "_id": "unique_id",
-    "name": "John Doe",
-    "height": 175,
-    "weight": 70,
-    "age": 30,
-    "isMale": true,
-    "bmi": 22.86,
-    "category": "Normal weight",
-    "unitSystem": "metric",
-    "createdAt": "timestamp",
-    "updatedAt": "timestamp"
-  }
-
 ## Installation:
 To install the required packages, run the following command:
 ```
-  npm install dotenv express mongoose nodemon
+npm install dotenv express mongoose nodemon
 ```
 To start the server, use:
 ```
-  npm run server
+npm run server
 ```
+
 ## Dependencies
 * dotenv: Load environment variables from a .env file.
 * express: Fast, unopinionated, minimalist web framework for Node.js.
