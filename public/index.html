@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- CSS -->
+  <link rel="stylesheet" href="/style.css">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <!-- Google fonts (Montserrat) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <title>BMI calculator</title>
+</head>
+
+<body class="page-wrapper">
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark-subtle" style="padding: 15px 120px;">
+    <a class="navbar-brand" href="#">BMI Calculator</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav align-items-center">
+        <li class="nav-item active">
+          <a class="nav-link" href="./history.html">History </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/a169n" target="_blank">About Me</a>
+        </li>
+        <li class="nav-item">
+          <Select class="form-select" id="unitSystem" name="unitSystem" onchange="onUnitSystemChange()">
+            <option value="selected" selected>Select</option>
+            <option value="metric">Metric</option>
+            <option value="imperial">Imperial</option>
+          </select>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <main class="global-padding">
+    <div class="main row">
+      <div class="main-container col-md-6 col-sm-12">
+        <form id="bmi-form" class="row g-3" action="/" method="POST" onsubmit="submitForm(event)">
+          <div class="col-md-12">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name"
+              required="true" />
+          </div>
+          <div class="col-md-12">
+            <label for="height" class="form-label" id="heightLabel">Height</label>
+            <input type="number" class="form-control" id="height" name="height" placeholder="Enter your height"
+              required="true" />
+          </div>
+          <div class="col-md-12">
+            <label for="weight" class="form-label" id="weightLabel">Weight</label>
+            <input type="number" class="form-control" id="weight" name="weight" placeholder="Enter your weight"
+              required="true" />
+          </div>
+          <div class="col-md-7">
+            <label for="age" class="form-label">Age</label>
+            <input type="number" class="form-control" id="age" name="age" placeholder="Enter your age"
+              required="true" />
+          </div>
+          <div class="col-md-5">
+            <label for="gender" class="form-label">Gender</label>
+            <select class="form-select" id="gender" name="gender">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary">
+              Calculate BMI
+            </button>
+          </div>
+        </form>
+      </div>
+      <div id="results" class="main-container col-md-6 col-sm-12">
+        <h2>Results</h2>
+        <p>Hello</p>
+      </div>
+    </div>
+  </main>
+
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+  </script>
+  <!-- JS -->
+  <script src="./index.js"></script>
+
+</body>
+
+</html>
