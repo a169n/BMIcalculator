@@ -34,28 +34,41 @@ BMI Calculator is a simple web application that allows users to calculate their 
     "gender": "male",
     "unitSystem": "metric"
   }
-Example Responce:
-  ```json
-  {
-  "_id": "unique_id",
-  "name": "John Doe",
-  "height": 175,
-  "weight": 70,
-  "age": 30,
-  "isMale": true,
-  "bmi": 22.86,
-  "category": "Normal weight",
-  "unitSystem": "metric",
-  "createdAt": "timestamp",
-  "updatedAt": "timestamp"
-}
+  Example Responce:
+    ```json
+    {
+    "_id": "unique_id",
+    "name": "John Doe",
+    "height": 175,
+    "weight": 70,
+    "age": 30,
+    "isMale": true,
+    "bmi": 22.86,
+    "category": "Normal weight",
+    "unitSystem": "metric",
+    "createdAt": "timestamp",
+    "updatedAt": "timestamp"
+  }
 
-##Installation:
+## Installation:
 To install the required packages, run the following command:
+```
   npm install dotenv express mongoose nodemon
-
+```
 To start the server, use:
+```
   npm run server
+```
+## Dependencies
+* dotenv: Load environment variables from a .env file.
+* express: Fast, unopinionated, minimalist web framework for Node.js.
+* mongoose: MongoDB object modeling tool designed to work in an asynchronous environment.
+* nodemon: Monitor for any changes in your Node.js application and automatically restart the server.
+### License
+This project is licensed under the ISC License.
+
+### Author
+Aibyn Talgatov
 
 
 
