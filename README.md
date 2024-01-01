@@ -34,6 +34,29 @@ To start the server, use:
 npm run server
 ```
 
+### Script
+Change the script: At the end your **package.json** should look like this:
+```
+{
+  "name": "bmicalculator",
+  "version": "1.0.0",
+  "description": "simple BMI calculator",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon server.js"
+  },
+  "author": "Aibyn Talgatov",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^8.0.3",
+    "nodemon": "^3.0.2"
+  }
+}
+```
+
 ## Dependencies
 * dotenv: Load environment variables from a .env file.
 * express: Fast, unopinionated, minimalist web framework for Node.js.
