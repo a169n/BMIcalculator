@@ -16,8 +16,8 @@ BMI Calculator is a simple web application that allows users to calculate their 
 
 ### Web Application
 
-- Access the BMI calculator at [http://localhost:your_port/](http://localhost:your_port/)
-- Access the user history at [http://localhost:your_port/history](http://localhost:your_port/history)
+- Access the BMI calculator at [http://localhost:3000/](http://localhost:your_port/)
+- Access the user history at [http://localhost:3000/history](http://localhost:your_port/history)
 
 ### API Endpoints
 
@@ -43,7 +43,6 @@ npm run server
 This project is licensed under the ISC License.
 
 ### Author
-Aibyn Talgatov
-
+[Aibyn Talgatov](https://t.me/a1byn)
 
 
