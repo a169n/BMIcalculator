@@ -34,8 +34,12 @@ To start the server, use:
 npm run server
 ```
 
-### Script
-Change the script: At the end your **package.json** should look like this:
+## Script
+Change the script to 
+```
+"server": "nodemon server.js"
+```
+At the end your **package.json** should look like this:
 ```
 {
   "name": "bmicalculator",
