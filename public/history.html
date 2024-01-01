@@ -1,66 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="/style.css" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- CSS -->
-  <link rel="stylesheet" href="/style.css" />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <!-- Google fonts (Montserrat) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
-  <!-- Google fonts (Montserrat) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet" />
+    <title>Calculation History</title>
+  </head>
 
-  <title>Calculation History</title>
-</head>
-
-<body class="container p-5">
-  <div>
-    <div class="history-header">
-      <h2 class="mt-1">User History</h2>
-      <p id="currentTime" class="mt-3 mx-auto"></p>
-      <button class="btn btn-danger" style="width: 15%" onclick="clearAllUsers()">
-        Delete ALL
-      </button>
+  <body class="container p-5">
+    <div>
+      <div class="history-header">
+        <h2 class="mt-1">User History</h2>
+        <p id="currentTime" class="mt-3 mx-auto"></p>
+        <button
+          class="btn btn-danger"
+          style="width: 15%"
+          onclick="clearAllUsers()"
+        >
+          Delete ALL
+        </button>
+      </div>
+      <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+          <tr>
+            <th>Name</th>
+            <th>Height</th>
+            <th>Weight</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>BMI</th>
+            <th>Category</th>
+            <th>Submitted At</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="userTableBody">
+          <!-- Users will be dynamically added here -->
+        </tbody>
+      </table>
     </div>
-    <table class="table table-bordered table-striped">
-      <thead class="table-dark">
-        <tr>
-          <th>Name</th>
-          <th>Height (cm/inches)</th>
-          <th>Weight (kg/lbs)</th>
-          <th>Age</th>
-          <th>Gender</th>
-          <th>BMI</th>
-          <th>Category</th>
-          <th>Submitted At</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody id="userTableBody">
-        <!-- Users will be dynamically added here -->
-      </tbody>
-    </table>
-  </div>
 
-  <!-- Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-  </script>
-  <!-- JS -->
-  <script src="./index.js"></script>
-</body>
-
+    <!-- Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <!-- JS -->
+    <script src="./index.js"></script>
+  </body>
 </html>
