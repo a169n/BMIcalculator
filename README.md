@@ -14,10 +14,11 @@ BMI Calculator is a simple web application that allows users to calculate their 
 
 ## Usage
 
+
 ### Web Application
 
-- Access the BMI calculator at [http://localhost:3000/](http://localhost:your_port/)
-- Access the user history at [http://localhost:3000/history](http://localhost:your_port/history)
+- Access the BMI calculator at [http://localhost:3000/](http://localhost:3000)
+- Access the user history at [http://localhost:3000/history](http://localhost:3000/history)
 
 ### API Endpoints
 
@@ -25,45 +26,37 @@ BMI Calculator is a simple web application that allows users to calculate their 
 - **POST /users:** Create a new user and calculate BMI.
 
 ## Installation:
+
+**Create an .env file:**
+```
+PORT = your_port
+MONGO_URL = your_mongodb_url
+```
+
+to get MONGO_URL visit https://www.mongodb.com/atlas/database and register ot login,
+create a database with collection named **users** and select **driver** method to
+connect to cluster. Link should be like:
+```
+mongodb+srv://<username>:<password>@daryntech.jxuelry.mongodb.net/<database_name>?retryWrites=true&w=majority
+```
+replace username, password and database_name with yours.
+**Make sure that your IP-address are listed on the network access menu**
+
+
+
 To install the required packages, run the following commands:
 ```
 npm init -yes
 ```
 After this install these packages:
 ```
-npm install dotenv express mongoose nodemon
+npm install
 ```
 To start the server, use:
 ```
 npm run server
 ```
 
-## Script
-Change the script to 
-```
-"server": "nodemon server.js"
-```
-At the end your **package.json** should look like this:
-```
-{
-  "name": "bmicalculator",
-  "version": "1.0.0",
-  "description": "simple BMI calculator",
-  "main": "index.js",
-  "scripts": {
-    "server": "nodemon server.js"
-  },
-  "author": "Aibyn Talgatov",
-  "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.20.2",
-    "dotenv": "^16.3.1",
-    "express": "^4.18.2",
-    "mongoose": "^8.0.3",
-    "nodemon": "^3.0.2"
-  }
-}
-```
 
 ## Dependencies
 * dotenv: Load environment variables from a .env file.
